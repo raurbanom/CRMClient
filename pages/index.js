@@ -1,13 +1,11 @@
-import styles from '../styles/Home.module.css'
+import Layout from '../components/Layout'
 
-export default function Home() {
-  return (
-    <div className={styles.container}>
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-      </main>
-    </div>
-  )
-}
+const Index = () => (
+  <div>
+    <Layout>
+      <h2>Desde Index</h2>
+    </Layout>
+  </div>
+)
+
+export default Index;
