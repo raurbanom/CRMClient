@@ -1,46 +1,120 @@
 import React from 'react';
-import Layout from '../components/Layout'
+import Layout from '../components/Layout';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 
 const NewAccount = () => {
+
+    const formik = useFormik({
+        initialValues: {
+            firstName: "",
+            lastName: "",
+            email: "",
+            password: ""
+        },
+        validationSchema: Yup.object({
+            firstName: Yup.string()
+                .required("The first name is a required field"),
+            lastName: Yup.string()
+                .required("The last name is a required field"),
+            email: Yup.string()
+                .email("The email address is not valid")
+                .required("The email is a required field"),
+            password: Yup.string()
+                .required("The password is a required field")
+                .min(6, "The passwords field must contain at least 6 characters")
+        }),
+        onSubmit: (values) => {
+            console.log("sending...");
+            console.log(values)
+        }
+    });
+
     return (
         <>
             <Layout>
-                <h1 className="text-center text-2xl text-white font-light">Create a new account</h1>
+                <h1 className="text-center text-2xl text-white font-light">Create a New Account</h1>
                 <div className="flex justify-center mt-5">
                     <div className="w-full max-w-sm">
-                        <form className="bg-white rounded shadow-md px-8 pt-6 pb-8 mb-4">
+                        <form
+                            className="bg-white rounded shadow-md px-8 pt-6 pb-8 mb-4"
+                            onSubmit={formik.handleSubmit}>
                             <div className="mb-4">
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="firstName">
                                     First Name
                                 </label>
                                 <input
                                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-1"
-                                    id="firstName" type="text" placeholder="User's First Name" />
+                                    id="firstName"
+                                    type="text"
+                                    placeholder="User's First Name"
+                                    value={formik.values.firstName}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur} />
                             </div>
+                            {formik.touched.firstName && formik.errors.firstName ? (
+                                <div className="my-2 bg-red-100 border-l-4 border-red-500 text-red-700 p-4">
+                                    <p className="font-bold">Error</p>
+                                    <p>{formik.errors.firstName}</p>
+                                </div>
+                            ) : null}
                             <div className="mb-4">
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="lastName">
                                     Last Name
                                 </label>
                                 <input
                                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-1"
-                                    id="lastName" type="text" placeholder="User's Last Name" />
+                                    id="lastName"
+                                    type="text"
+                                    placeholder="User's Last Name"
+                                    value={formik.values.lastName}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur} />
                             </div>
+                            {formik.touched.lastName && formik.errors.lastName ? (
+                                <div className="my-2 bg-red-100 border-l-4 border-red-500 text-red-700 p-4">
+                                    <p className="font-bold">Error</p>
+                                    <p>{formik.errors.lastName}</p>
+                                </div>
+                            ) : null}
                             <div className="mb-4">
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
                                     Email
                                 </label>
                                 <input
                                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-1"
-                                    id="email" type="email" placeholder="User's Email" />
+                                    id="email"
+                                    type="email"
+                                    placeholder="User's Email"
+                                    value={formik.values.email}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur} />
                             </div>
+                            {formik.touched.email && formik.errors.email ? (
+                                <div className="my-2 bg-red-100 border-l-4 border-red-500 text-red-700 p-4">
+                                    <p className="font-bold">Error</p>
+                                    <p>{formik.errors.email}</p>
+                                </div>
+                            ) : null}
                             <div className="mb-4">
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
                                     Password
                                 </label>
                                 <input
                                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-1"
-                                    id="password" type="password" placeholder="User's Password" />
+                                    id="password"
+                                    type="password"
+                                    placeholder="User's Password"
+                                    value={formik.values.password}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur} />
                             </div>
+                            {formik.touched.password && formik.errors.password ? (
+                                <div className="my-2 bg-red-100 border-l-4 border-red-500 text-red-700 p-4">
+                                    <p className="font-bold">Error</p>
+                                    <p>{formik.errors.password}</p>
+                                </div>
+                            ) : null}
                             <input type="submit"
                                 className="bg-gray-800 w-full mt-5 p-2 text-white uppercase hover:bg-gray-900"
                                 value="Create Account" />
