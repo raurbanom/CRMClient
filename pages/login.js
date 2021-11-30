@@ -15,7 +15,7 @@ const Login = () => {
                                 </label>
                                 <input
                                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-1"
-                                    id="email" type="email" placeholder="User Email" />
+                                    id="email" type="email" placeholder="User's Email" />
                             </div>
                             <div className="mb-4">
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
@@ -23,11 +23,11 @@ const Login = () => {
                                 </label>
                                 <input
                                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-1"
-                                    id="password" type="password" placeholder="User Password" />
+                                    id="password" type="password" placeholder="User's Password" />
                             </div>
                             <input type="submit"
                                 className="bg-gray-800 w-full mt-5 p-2 text-white uppercase hover:bg-gray-900"
-                                value="Login" />
+                                value="Log In" />
                         </form>
                     </div>
                 </div>
