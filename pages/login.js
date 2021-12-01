@@ -52,13 +52,13 @@ const Login = () => {
                 setTimeout(() => {
                     setMessage(null);
                     router.push("/");
-                }, 3000);
+                }, 2000);
             } catch (error) {
                 setMessage(error.message);
 
                 setTimeout(() => {
                     setMessage(null);
-                }, 3000);
+                }, 2000);
             }
         }
     });

@@ -60,14 +60,14 @@ const NewAccount = () => {
                 setTimeout(() => {
                     setMessage(null);
                     router.push("/login");
-                }, 3000);
+                }, 2000);
 
             } catch (error) {
                 setMessage(error.message);
 
                 setTimeout(() => {
                     setMessage(null);
-                }, 3000);
+                }, 2000);
             }
         }
     });
