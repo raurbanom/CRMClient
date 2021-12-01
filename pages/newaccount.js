@@ -17,7 +17,6 @@ const NEW_ACCOUNT = gql`
 `;
 
 const NewAccount = () => {
-    // Create new user from GraphQL
     const [newUser] = useMutation(NEW_ACCOUNT);
     const [message, setMessage] = useState(null);
     const router = useRouter();
@@ -84,8 +83,8 @@ const NewAccount = () => {
     return (
         <>
             <Layout>
-                {message && showMessage()}
                 <h1 className="text-center text-2xl text-white font-light">Create a New Account</h1>
+                {message && showMessage()}
                 <div className="flex justify-center mt-5">
                     <div className="w-full max-w-sm">
                         <form
