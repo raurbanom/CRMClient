@@ -4,9 +4,17 @@ A Project for Next JS
 
 ## Getting Started
 
+Install dependencies
+
+```bash
+npm install
+```
+
 First, run the development server:
 
 ```bash
+npm install
+
 npm run dev
 ```
 
