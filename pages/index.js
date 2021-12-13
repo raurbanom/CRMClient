@@ -11,6 +11,7 @@ const GET_CLIENTS_USER = gql`
       lastName
       company
       email
+      phone
     }
   }
 `;
