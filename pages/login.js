@@ -15,9 +15,10 @@ const AUTH_USER = gql`
 
 const Login = () => {
 
-    const [authenticateUser] = useMutation(AUTH_USER);
-    const [message, setMessage] = useState(null);
     const router = useRouter();
+
+    const [message, setMessage] = useState(null);
+    const [authenticateUser] = useMutation(AUTH_USER);
 
     const formik = useFormik({
         initialValues: {

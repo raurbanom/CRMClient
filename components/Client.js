@@ -1,7 +1,7 @@
 import React from 'react';
 import Swal from 'sweetalert2';
 import { gql, useMutation } from '@apollo/client';
-import { getRedirectStatus } from 'next/dist/lib/load-custom-routes';
+import { useRouter } from "next/router";
 
 const DELETE_CLIENT = gql`
     mutation DeleteClient($id: ID!) {
@@ -23,6 +23,9 @@ const GET_CLIENTS_USER = gql`
 `;
 
 const Client = ({ client }) => {
+
+    const router = useRouter()
+
     const [deleteClient] = useMutation(DELETE_CLIENT, {
         update(cache) {
             const { getClientsBySeller } = cache.readQuery({
@@ -76,6 +79,14 @@ const Client = ({ client }) => {
             }
         })
     }
+
+    const editClient = (id) => {
+        router.push({
+            pathname: "/editClient/[pid]",
+            query: { pid: id },
+        });
+    }
+
     return (
         <tr >
             <td className='border px-4 py-2'>{firstName} {lastName}</td>
@@ -85,12 +96,21 @@ const Client = ({ client }) => {
                 <button
                     type='button'
                     className='flex justify-center items-center bg-red-800 py-2 px-4 w-full text-white rounded text-xs uppercase font-bold'
-                    onClick={() => confirmDeleteClient(id)}
-                >
-
+                    onClick={() => confirmDeleteClient(id)}>
                     Delete
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </button>
+            </td>
+            <td className='border px-4 py-2'>
+                <button
+                    type='button'
+                    className='flex justify-center items-center bg-green-600 py-2 px-4 w-full text-white rounded text-xs uppercase font-bold'
+                    onClick={() => editClient(id)}>
+                    Edit
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                     </svg>
                 </button>
             </td>
