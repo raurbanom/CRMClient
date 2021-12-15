@@ -35,9 +35,7 @@ const Client = ({ client }) => {
             cache.writeQuery({
                 query: GET_CLIENTS_USER,
                 data: {
-                    getClientsBySeller: getClientsBySeller.filter((client) => {
-                        return client.id !== id;
-                    })
+                    getClientsBySeller: getClientsBySeller.filter((client) => client.id !== id)
                 }
             })
         }
@@ -66,12 +64,13 @@ const Client = ({ client }) => {
                         }
                     })
 
-                    // Show alert
-                    Swal.fire(
-                        'Deleted!',
-                        data.deleteClient,
-                        'success'
-                    )
+                    // Show alert            
+                    Swal.fire({
+                        title: 'Deleted!',
+                        text: data.deleteClient,
+                        icon: 'success',
+                        confirmButtonColor: '#3085d6'
+                    });
                 } catch (error) {
                     console.log(error);
                 }

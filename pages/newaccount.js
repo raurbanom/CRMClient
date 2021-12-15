@@ -83,7 +83,7 @@ const NewAccount = () => {
     return (
         <>
             <Layout>
-                <h1 className="text-center text-2xl text-white font-light">Create a New Account</h1>
+                <h1 className="text-2xl text-white font-light">Create New Account</h1>
                 {message && showMessage()}
                 <div className="flex justify-center mt-5">
                     <div className="w-full max-w-sm">

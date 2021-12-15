@@ -18,12 +18,12 @@ const Sidebar = () => {
                     </Link>
                 </li>
                 <li className={router.pathname === "/order" ? "bg-blue-800 p-2" : "p-2"} >
-                    <Link href="/order">
+                    <Link href="/orders">
                         <a className="text-white block">Orders</a>
                     </Link>
                 </li>
                 <li className={router.pathname === "/product" ? "bg-blue-800 p-2" : "p-2"} >
-                    <Link href="/product">
+                    <Link href="/products">
                         <a className="text-white block">Products</a>
                     </Link>
                 </li>

@@ -47,11 +47,10 @@ const Index = () => {
             </tr>
           </thead>
           <tbody className='bg-white'>
-            {data.getClientsBySeller.map((client) => (
+            {data.getClientsBySeller.map((client) =>
               <Client
                 key={client.id}
                 client={client} />
-            )
             )}
           </tbody>
         </table>

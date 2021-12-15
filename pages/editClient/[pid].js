@@ -59,6 +59,10 @@ const EditClient = () => {
 
     if (loading) return "Loading...";
 
+    if (data && !data.getClient) {
+        return "This action is not allowed";
+    }
+
     const { getClient } = data;
     const editInfoClient = async (values) => {
         const { firstName, lastName, company, email, phone } = values;
@@ -77,11 +81,12 @@ const EditClient = () => {
                 }
             });
 
-            Swal.fire(
-                'Updated!',
-                'The client has been updated successfully',
-                'success'
-            );
+            Swal.fire({
+                title: 'Updated!',
+                text: "The client was successfully updated",
+                icon: 'success',
+                confirmButtonColor: '#3085d6'
+            });
 
             router.push("/");
         } catch (error) {
