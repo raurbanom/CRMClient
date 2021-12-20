@@ -94,7 +94,7 @@ const Client = ({ client }) => {
             <td className='border px-4 py-2'>
                 <button
                     type='button'
-                    className='flex justify-center items-center bg-red-800 py-2 px-4 w-full text-white rounded text-xs uppercase font-bold'
+                    className='flex justify-center items-center bg-red-800 py-2 px-5 w-full text-white rounded text-xs uppercase font-bold'
                     onClick={() => confirmDeleteClient(id)}>
                     Delete
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
